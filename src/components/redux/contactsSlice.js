@@ -18,7 +18,7 @@ const contactsSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
-    register: (state, action) => {
+    register: (action) => {
       console.log(action.payload.data.key);
     },
   },
