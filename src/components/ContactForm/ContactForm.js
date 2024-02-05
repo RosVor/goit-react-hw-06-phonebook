@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../redux/contactsSlice';
+import { getContacts } from 'components/redux/selectors';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
+  const contact = useSelector(getContacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const existingContact = contact.find(
+      (contact) => contact.name === name && contact.number === number
+    );
+
+    if (existingContact) {
+      alert('Alarm! The same contact!')
+    }
+    else {
     dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
+    }
   };
+
 
   return (
     <form onSubmit={handleSubmit} className="contact-form">
@@ -42,3 +55,5 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
+

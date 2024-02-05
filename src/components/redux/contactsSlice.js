@@ -18,11 +18,8 @@ const contactsSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
-    register: (action) => {
-      console.log(action.payload.data.key);
-    },
   },
 });
 
-export const { addContact, deleteContact, setFilter, register } = contactsSlice.actions;
+export const { addContact, deleteContact, setFilter} = contactsSlice.actions;
 export default contactsSlice.reducer;
