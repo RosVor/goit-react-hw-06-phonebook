@@ -13,17 +13,15 @@ const ContactForm = () => {
     event.preventDefault();
 
     const existingContact = contact.find(
-      (contact) => contact.name === name && contact.number === number
+      (contact) => contact.name.toLowerCase() === name.toLowerCase() || contact.number === number
     );
 
     if (existingContact) {
       alert('Alarm! The same contact!')
     }
-    else {
     dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
-    }
   };
 
 
